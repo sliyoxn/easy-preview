@@ -3,8 +3,7 @@
 
 
 
-## 使用方法
-
+### 使用方法
 ### 注册
 
 #### 全局注册
@@ -34,9 +33,9 @@ export default {
 
 ### 使用
 
-#### 控制权交给组件的使用
+#### 打开和隐藏的控制权交给组件内部
 
-这种使用方式比较简单，只要传入一个img标签给插槽使用并传入img-src属性即可
+比较简单，只要传入一个img标签给插槽使用并传入img-src属性的值即可
 
 ```
 <EasyPreview :img-src="imgSrc">
@@ -46,12 +45,11 @@ export default {
 
 #### 控制权不交给组件的使用
 
-这个时候要传入一个属性options，并将options.controlByUsers置为true，此时插槽会失效，需要传入一个额外的属性:show-preview控制显示和隐藏，此时点击右上角自带的关闭按钮改为触发自定义的clickCloseButton /  click-close-button  （两个都会触发）事件，可以监听事件并修改传入的show-preview的值。
+这个时候要传入一个属性options，并将options.controlByUsers置为true，此时插槽会失效，需要传入一个额外的属性:show-preview控制显示和隐藏，此时点击右上角自带的关闭按钮改为触发自定义的clickCloseButton和click-close-button  事件（两个都会触发），你可以选择监听事件并修改传入的show-preview的值。
 
 ```			
 <img :src="imgSrc" alt="" width="500" style="border-radius: 10px" @click="onclick">
 <EasyPreview :img-src="imgSrc" :options="options" :show-preview="showPreview"   @clickCloseButton="onClickCloseButton"></EasyPreview>
-
 
 
 {
