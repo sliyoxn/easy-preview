@@ -13,14 +13,12 @@
     2. 在main.js中加入下面两句
         import EasyPreview from "easy-preview";
         Vue.use(EasyPreview);
-    3. 使用&lt;EasyPreview>标签即可
+    3. 使用<EasyPreview>标签即可
 
 #### 局部注册
 
     1. 使用npm install easy-preview安装插件
     2. 在组件中注册EasyPreview
-        import EasyPreview from "easy-preview";
-        Vue.use(EasyPreview);
     3. 使用<EasyPreview>;标签即可
 
 ```
