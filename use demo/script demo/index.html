@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <img :src="imgSrcArr[index]" alt="" width="500" style="border-radius: 10px" @click="onclick">
+        <easy-preview :img-src="imgSrcArr[index]" :options="options" :show-preview="showPreview" @click-close-button="onClickCloseButton">
+        </easy-preview>
+        <button style="position: fixed; z-index: 1; top: 50%; left: 0%; transform: translateY(-50%)" @click="changeIndex">上一个</button>
+        <button style="position: fixed; z-index: 1; top: 50%; right: 0%; transform: translateY(-50%)" @click="changeIndex">下一个</button>
+        <easy-preview :img-src="imgSrcArr[2]">
+            <img :src="imgSrcArr[2]" width="500" style="border-radius: 10px" alt="">
+        </easy-preview>
+    </div>
+
+	<!-- 先引入vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!-- 再引入EasyPreview组件 -->
+    <script src="https://sakurablog-others.oss-cn-beijing.aliyuncs.com/others/EasyPreview.js"></script>
+    <script type="module">
+        let vm = new Vue({
+            el : "#app",
+            data() {
+                return {
+                    imgSrcArr : [
+                        "https://sakurablog-others.oss-cn-beijing.aliyuncs.com/47522338_p0_master1200.jpg",
+                        "https://sakurablog-others.oss-cn-beijing.aliyuncs.com/illust_54257893_20181002_134047.jpg",
+                        "https://sakurablog-others.oss-cn-beijing.aliyuncs.com/preview.jpg"
+                    ],
+                    options : {
+                        controlByUsers : true,
+                        showStatusExtraStyle : {
+                            "opacity" : "1",
+                            "transform" : "translateY(0)"
+                        },
+                        hideStatusExtraStyle : {
+                            "opacity" : "0.5",
+                            "transform" : "translateY(100%)"
+                        },
+                        buttonHoverExtraStyle : {
+                            "color" : "#ffffff",
+                            "background-color" : "transparent",
+                            "opacity" : "1"
+                        },
+                        buttonExtraStyle : {
+                            "color" : "#ffffff",
+                            "background-color" : "transparent",
+                            "opacity" : "1"
+                        }
+                    },
+                    showPreview : false,
+                    index : 0
+                }
+            },
+            methods : {
+                onclick() {
+                    this.showPreview = true
+                },
+                onClickCloseButton(reset) {
+                    this.showPreview = false;
+                    reset(500);
+                },
+                changeIndex(direction) {
+                    if (direction === "prev") {
+                        this.index = (this.index - 1 + this.imgSrcArr.length) % this.imgSrcArr.length;
+                    } else {
+                        this.index = (this.index - 1 + this.imgSrcArr.length) % this.imgSrcArr.length;
+                    }
+                }
+            }
+        })
+
+
+
+    </script>
+
+
+</body>
+</html>
